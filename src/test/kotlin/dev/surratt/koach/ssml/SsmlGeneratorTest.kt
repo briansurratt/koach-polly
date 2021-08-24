@@ -4,8 +4,7 @@ import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.*
 import dev.surratt.koach.Stretch
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 
 internal class SsmlGeneratorTest {
 
@@ -24,9 +23,6 @@ internal class SsmlGeneratorTest {
     @BeforeEach
     fun setup() {
         ssmlScript = generator.generate(testStretch)
-        println("*******")
-        println(ssmlScript)
-        println("*******")
     }
 
     @Test
@@ -87,7 +83,6 @@ internal class SsmlGeneratorTest {
         val script = SsmlGenerator().generate(justOneSet)
 
         assertThat(script).doesNotContain("set", true)
-
 
     }
 
@@ -151,6 +146,61 @@ internal class SsmlGeneratorTest {
     fun `break after each repetition`() {
         val count = ssmlScript.countOccurrences("""<break time="${REPETITION_BREAK_SECONDS}s"/>""")
         assertThat(count).isEqualTo(testStretch.repetitions * testStretch.sets)
+    }
+
+    @Nested
+    @DisplayName("given a bilateral stretch")
+    inner class GivenABilateralStretch {
+
+        private val bilateralStretch = Stretch(
+            name = "floor lower back lift",
+            bilateral = true,
+            repetitions = 11,
+            duration = 2,
+            sets = 3,
+            description = """Do what I say."""
+        )
+
+        @Nested
+        @DisplayName("When generate is called")
+        inner class WhenGenerateIsCalled {
+
+            lateinit var ssmlScript : String
+
+            @BeforeEach
+            fun setup() {
+                ssmlScript = SsmlGenerator().generate(bilateralStretch)
+            }
+
+            @Test
+            @DisplayName("Then the phrase left side appears for each rep and set")
+            fun `then the phrase left side appears for each rep and set`() {
+                val occurrences = ssmlScript.countOccurrences("left side")
+                assertThat(occurrences).isEqualTo(bilateralStretch.sets * bilateralStretch.repetitions)
+            }
+
+            @Test
+            @DisplayName("Then the phrase right side appears for each rep and set")
+            fun `then the phrase right side appears for each rep and set`() {
+                val occurrences = ssmlScript.countOccurrences("right side")
+                assertThat(occurrences).isEqualTo(bilateralStretch.sets * bilateralStretch.repetitions)
+            }
+
+            @Test
+            @DisplayName("Then the phrase 'alternating sides' is present")
+            fun `then the phrase alternating sides is present`() {
+                assertThat(ssmlScript).contains("alternating sides.")
+            }
+
+            @Test
+            @DisplayName("Then count break occurs appropriate number of times")
+            fun `then count break occurs appropriate number of times`() {
+                val occurrences = ssmlScript.countOccurrences("""<break time="${COUNT_PAUSE_MILLISECONDS}ms"/>""")
+                assertThat(occurrences).isEqualTo(bilateralStretch.duration * bilateralStretch.repetitions * bilateralStretch.sets * 2)
+            }
+
+        }
+
     }
 
 }

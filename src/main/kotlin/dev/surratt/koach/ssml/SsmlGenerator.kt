@@ -1,13 +1,10 @@
 package dev.surratt.koach.ssml
 
-import com.mirego.dsl.ssml.element.`break`
-import com.mirego.dsl.ssml.element.p
-import com.mirego.dsl.ssml.element.s
-import com.mirego.dsl.ssml.element.speak
+import com.mirego.dsl.ssml.element.*
 import dev.surratt.koach.Stretch
 
 const val READY_PAUSE_SECONDS = 1
-const val REPETITION_BREAK_SECONDS = 5
+const val REPETITION_BREAK_SECONDS = 3
 const val COUNT_PAUSE_MILLISECONDS = 750
 
 class SsmlGenerator {
@@ -17,12 +14,18 @@ class SsmlGenerator {
         val ssml = speak {
 
             p {
+
                 s { +stretch.name }
                 s { +stretch.description }
+
                 if (stretch.sets > 1) {
                     s { +"${stretch.sets} sets of ${stretch.repetitions} repetitions." }
                 } else {
                     s { +"${stretch.repetitions} repetitions." }
+                }
+
+                if (stretch.bilateral) {
+                    s { +"alternating sides." }
                 }
 
             }
@@ -51,17 +54,29 @@ class SsmlGenerator {
                                 +"$repetition repetitions remaining"
                             }
                         }
+                    }
+
+                    p {
                         s { +"Ready." }
                         s { +"Begin." }
                     }
 
                     +"\n"
                     // count loop
-                    for (count in 1..stretch.duration) {
-                        +count.toString()
-                        `break`(time = "${COUNT_PAUSE_MILLISECONDS}ms")
-                        +"\n"
+                    val duration = stretch.duration
+
+                    if (stretch.bilateral) {
+                        +"left side"
+                        `break`(time = "${READY_PAUSE_SECONDS}s")
+                        generateCount(duration)
+                        +"right side"
+                        `break`(time = "${READY_PAUSE_SECONDS}s")
+                        generateCount(duration)
+                    } else {
+                        generateCount(duration)
                     }
+
+
                     +"And relax."
                     +"\n"
                     `break`(time = "${REPETITION_BREAK_SECONDS}s")
@@ -73,6 +88,14 @@ class SsmlGenerator {
 
         return ssml.toString()
 
+    }
+
+    private fun Speak.generateCount(duration: Int) {
+        for (count in 1..duration) {
+            +count.toString()
+            `break`(time = "${COUNT_PAUSE_MILLISECONDS}ms")
+            +"\n"
+        }
     }
 
 }

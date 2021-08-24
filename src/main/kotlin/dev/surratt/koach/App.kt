@@ -37,6 +37,25 @@ fun main(args: Array<String>) {
         .withVoice(VoiceId.JOANNA)
         .toFile(file)
 
-//    Files.write(file.toPath(), inputStream.readAllBytes())
+}
+
+fun generateScriptToFile(stretch: Stretch) {
+    val ssmlText = SsmlGenerator().generate(stretch)
+    val fileName = stretch.shortDescription() + ".mp3"
+    val file = File(fileName)
+    println("file = ${file.absolutePath}")
+    polly()
+        .synthesize(ssmlText)
+        .withVoice(VoiceId.JOANNA)
+        .toFile(file)
+}
+
+fun processStretches(stretches: List<Stretch>) {
+
+    stretches.forEach { stretch ->
+        println("Processing ${stretch.name}")
+        generateScriptToFile(stretch)
+
+    }
 
 }
