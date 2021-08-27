@@ -1,6 +1,7 @@
 package dev.surratt.koach.stretches
 
 import dev.surratt.koach.Stretch
+import dev.surratt.koach.processStretches
 
 // floor cross body knee to chest
 val floorCrossBodyKneeToChest = Stretch(
@@ -8,7 +9,6 @@ val floorCrossBodyKneeToChest = Stretch(
     bilateral = true,
     repetitions = 3,
     duration = 20,
-    sets = 1,
     description =
     """pull knee toward opposite shoulder.""".trimIndent()
 )
@@ -19,7 +19,6 @@ val floorTrunkRotation = Stretch(
     bilateral = true,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """keeping back flat and feet together, rotate knees to one side.""".trimIndent()
 )
@@ -30,7 +29,6 @@ val floorKneeToChest = Stretch(
     bilateral = true,
     repetitions = 5,
     duration = 10,
-    sets = 1,
     description =
     """with hand behind knee pull knee to chest until a comfortable stretch is felt in lower back and buttocks.""".trimIndent()
 )
@@ -41,7 +39,6 @@ val floorAngryCatStretch = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """Tuck chin and tighten stomach, arching back""".trimIndent()
 )
@@ -52,18 +49,16 @@ val floorHalfButterflyStretch = Stretch(
     bilateral = true,
     repetitions = 5,
     duration = 10,
-    sets = 2,
     description =
     """Laying on back, feet flat on ground and knees raised, lower one knee to the ground.""".trimIndent()
 )
 
 // floor full butterfly stretch
 val floorFullButterflyStretch = Stretch(
-    name = "loor full butterfly stretch",
+    name = "floor full butterfly stretch",
     bilateral = false,
     repetitions = 5,
     duration = 5,
-    sets = 1,
     description =
     """Laying on back, feet flat on ground and knees raised, lower both knees to the ground.""".trimIndent()
 )
@@ -74,7 +69,6 @@ val floorLowerBackLift = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """With feet on the ground and knees raised, lift hips off the ground, keeping back and shoulders flat.""".trimIndent()
 )
@@ -85,7 +79,6 @@ val floorBackLift = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """With feet on the ground and knees raised, lift hips off the ground, keeping shoulders flat.""".trimIndent()
 )
@@ -102,5 +95,5 @@ val floorStretches = listOf<Stretch>(
 )
 
 fun main() {
-
+    processStretches(floorStretches)
 }

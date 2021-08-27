@@ -7,7 +7,6 @@ val wingArmBreathing = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """Stand with arms at your sides, elbows bent to 90 degrees, palms up.
     Rotate arms outward, keeping elbows tucked against side of body.
@@ -20,7 +19,6 @@ val bilateralScaptionRaises = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """Stand upright, hands at you side, thumbs out.
         Brace your lower back by contracting abdominal and back muscles.
@@ -32,7 +30,6 @@ val scapularRetractionAndDepression = Stretch(
     bilateral = false,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """Stand upright facing a wall.
         Reach above your head so hands are at 10 and 2 o'clock

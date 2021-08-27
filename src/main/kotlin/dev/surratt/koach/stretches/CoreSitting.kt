@@ -1,13 +1,13 @@
 package dev.surratt.koach.stretches
 
 import dev.surratt.koach.Stretch
+import dev.surratt.koach.processStretches
 
 val sittingNeckStretch = Stretch(
     name = "sitting neck stretch",
     bilateral = true,
     repetitions = 3,
     duration = 30,
-    sets = 1,
     description = 
     """Sit with back straight, place one hand on small of back.  Grasp back of head with other hand and gently pull head down in that direction.""".trimIndent()
 )
@@ -18,7 +18,6 @@ val sittingLevatorScapulaStretch = Stretch(
     bilateral = true,
     repetitions = 10,
     duration = 5,
-    sets = 1,
     description =
     """place both hands on head, gently stretch head down and away.""".trimIndent()
 )
@@ -29,7 +28,6 @@ val sittingLowerBackStretch = Stretch(
     bilateral = false,
     repetitions = 5,
     duration = 10,
-    sets = 1,
     description =
     """sit in a chair with knees spread apart. bend forward to the floor until a comfortable stretch is felt in the lower back.""".trimIndent()
 )
@@ -40,7 +38,17 @@ val sittingUpperTrapeziusStretch = Stretch(
     bilateral = true,
     repetitions = 5,
     duration = 10,
-    sets = 1,
     description =
     """reach behind back with one hand. tilt head away until stretch is felt.""".trimIndent()
 )
+
+val sittingStretches = listOf<Stretch>(
+    sittingNeckStretch,
+    sittingLevatorScapulaStretch,
+    sittingLowerBackStretch,
+    sittingUpperTrapeziusStretch
+)
+
+fun main() {
+    processStretches(sittingStretches)
+}
