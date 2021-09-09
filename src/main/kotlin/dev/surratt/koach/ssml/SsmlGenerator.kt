@@ -1,7 +1,8 @@
 package dev.surratt.koach.ssml
 
 import com.mirego.dsl.ssml.element.*
-import dev.surratt.koach.Stretch
+import dev.surratt.koach.resist.ResistanceExercise
+import dev.surratt.koach.stretches.Stretch
 
 const val READY_PAUSE_SECONDS = 1
 const val REPETITION_BREAK_SECONDS = 3
@@ -96,6 +97,18 @@ class SsmlGenerator {
             `break`(time = "${COUNT_PAUSE_MILLISECONDS}ms")
             +"\n"
         }
+    }
+
+    fun generate(exercise: ResistanceExercise): String {
+
+        val ssml = speak {
+            p {
+                s { +exercise.name }
+                s { +exercise.description }
+            }
+        }
+
+        return ssml.toString()
     }
 
 }

@@ -5,9 +5,9 @@ package dev.surratt.koach
 
 import dev.surratt.koach.aws.polly
 import dev.surratt.koach.ssml.SsmlGenerator
+import dev.surratt.koach.stretches.Stretch
 import software.amazon.awssdk.services.polly.model.VoiceId
 import java.io.File
-import java.nio.file.Files
 
 
 fun main(args: Array<String>) {

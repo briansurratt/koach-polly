@@ -1,4 +1,4 @@
-package dev.surratt.koach
+package dev.surratt.koach.stretches
 
 data class Stretch(
     val name: String,

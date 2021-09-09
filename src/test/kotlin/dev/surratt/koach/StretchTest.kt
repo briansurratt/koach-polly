@@ -2,6 +2,7 @@ package dev.surratt.koach
 
 import assertk.assertThat
 import assertk.assertions.contains
+import dev.surratt.koach.stretches.Stretch
 import org.junit.jupiter.api.Test
 
 internal class StretchTest {

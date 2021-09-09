@@ -1,6 +1,5 @@
 package dev.surratt.koach.stretches
 
-import dev.surratt.koach.Stretch
 import dev.surratt.koach.processStretches
 
 val sittingNeckStretch = Stretch(

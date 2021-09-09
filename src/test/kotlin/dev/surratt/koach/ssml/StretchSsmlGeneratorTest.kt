@@ -3,10 +3,10 @@ package dev.surratt.koach.ssml
 import assertk.assertAll
 import assertk.assertThat
 import assertk.assertions.*
-import dev.surratt.koach.Stretch
+import dev.surratt.koach.stretches.Stretch
 import org.junit.jupiter.api.*
 
-internal class SsmlGeneratorTest {
+internal class StretchSsmlGeneratorTest {
 
     private val testStretch = Stretch(
         name = "floor lower back lift",
@@ -138,9 +138,7 @@ internal class SsmlGeneratorTest {
         assertThat(ssmlScript.countOccurrences("And relax.")).isEqualTo(testStretch.repetitions * testStretch.sets)
     }
 
-    fun String.countOccurrences(substring: String): Int {
-        return this.windowed(substring.length).filter { it == substring }.count()
-    }
+
 
     @Test
     fun `break after each repetition`() {
