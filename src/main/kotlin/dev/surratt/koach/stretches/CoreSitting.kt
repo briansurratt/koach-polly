@@ -7,7 +7,7 @@ val sittingNeckStretch = Stretch(
     name = "sitting neck stretch",
     bilateral = true,
     repetitions = 3,
-    duration = 30,
+    duration = 15,
     description = 
     """Sit with back straight, place one hand on small of back.  Grasp back of head with other hand and gently pull head down in that direction.""".trimIndent()
 )

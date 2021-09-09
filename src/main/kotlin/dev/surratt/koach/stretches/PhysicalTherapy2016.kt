@@ -1,6 +1,7 @@
 package dev.surratt.koach.stretches
 
 import dev.surratt.koach.Stretch
+import dev.surratt.koach.processStretches
 
 val wingArmBreathing = Stretch(
     name = "Wing Arm Breathing",
@@ -36,3 +37,13 @@ val scapularRetractionAndDepression = Stretch(
         Your elbows should remain straight.
         Contract your shoulders down and together.""".trimIndent()
 )
+
+val pt2016 = listOf<Stretch>(
+    scapularRetractionAndDepression,
+    bilateralScaptionRaises,
+    wingArmBreathing
+)
+
+fun main() {
+    processStretches(pt2016)
+}

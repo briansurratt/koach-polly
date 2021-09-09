@@ -8,7 +8,7 @@ val standingIBandStretch = Stretch(
     name = "standing I band stretch",
     bilateral = true,
     repetitions = 3,
-    duration = 20,
+    duration = 15,
     description =
     """Cross one leg behind the other leg. Bend at waist, reaching for the floor.""".trimIndent()
 )
@@ -18,7 +18,7 @@ val standingQuadStretch = Stretch(
     name = "standing quad stretch",
     bilateral = true,
     repetitions = 3,
-    duration = 20,
+    duration = 15,
     description =
     """Grab ankle and pull heel towards buttock.""".trimIndent()
 )
@@ -27,7 +27,7 @@ val standingQuadStretch = Stretch(
 val standingScapularRetraction = Stretch(
     name = "standing scapular retraction",
     bilateral = false,
-    repetitions = 20,
+    repetitions = 15,
     duration = 5,
     description =
     """With elbows be to 90 degrees, pinch shoulder blades together and rotate arms out, keeping elbows bent.""".trimIndent()
@@ -38,7 +38,7 @@ val standingWallPush = Stretch(
     name = "standing wall push",
     bilateral = true,
     repetitions = 3,
-    duration = 20,
+    duration = 15,
     description =
     """Stand with foot back, leg straight, forward leg bent. Keeping heel on floor and turned slightly out, lean into wall until stretch is fel in the calf.""".trimIndent()
 )
@@ -48,7 +48,7 @@ val standingHamStringStretch = Stretch(
     name = "standing ham string stretch",
     bilateral = true,
     repetitions = 5,
-    duration = 20,
+    duration = 15,
     description =
     """Place foot on stool. slowly lean forward, keeping back straight, until stretch is felt in back of thigh.""".trimIndent()
 )
